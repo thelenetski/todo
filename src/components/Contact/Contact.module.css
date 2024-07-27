@@ -1,0 +1,31 @@
+.contact {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5%;
+  margin: 2%;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+.contactData {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.contactData div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.contactData div p {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.contactData svg {
+  color: green;
+}
