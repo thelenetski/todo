@@ -78,6 +78,6 @@ button:first-child {
 @media (prefers-color-scheme: dark) {
   .contact {
     background: #999;
-    color: #7d7d7d;
+    color: #333;
   }
 }
