@@ -1,7 +1,22 @@
 .searchBox {
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background: #eafbff;
 }
 
 .searchBox p {
+  width: 100%;
+  text-align: left;
   font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.searchBox input {
+  width: 100%;
 }

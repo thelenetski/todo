@@ -13,10 +13,18 @@ const Contact = ({ data, onDelete, onDone }) => {
         </div>
       </div>
       <div style={{ display: "flex" }}>
-        <button type="button" onClick={() => onDone(data.id)}>
+        <button
+          type="button"
+          className={css.btnDone}
+          onClick={() => onDone(data.id)}
+        >
           {data.done ? "UnDone" : "Done"}
         </button>
-        <button type="button" onClick={() => onDelete(data.id)}>
+        <button
+          type="button"
+          className={css.delete}
+          onClick={() => onDelete(data.id)}
+        >
           Del
         </button>
       </div>

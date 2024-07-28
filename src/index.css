@@ -25,7 +25,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  align-items: flex-start;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -33,6 +34,14 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  text-transform: uppercase;
+}
+
+hr {
+  width: 25%;
+  height: 1px;
+  background: #bbbbbb;
+  border: none;
 }
 
 p {
@@ -44,7 +53,6 @@ button {
   border: 1px solid transparent;
   padding: 2%;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
@@ -52,7 +60,7 @@ button {
   border: 1px solid #999;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #23abfa;
 }
 button:focus,
 button:focus-visible {
@@ -60,8 +68,8 @@ button:focus-visible {
 }
 
 input {
-  height: 27px;
-  margin-top: 5px;
+  height: 30px;
+  margin-top: 1px;
   border: 1px solid #999;
   border-radius: 5px;
   box-sizing: border-box;

@@ -39,7 +39,7 @@ const ContactForm = ({ onAdd }) => {
             id={nameFieldId}
           />
           <ErrorMessage name="name" component="span" />
-          <button type="submit">Add new task</button>
+          <button type="submit">Add task</button>
         </Form>
       </Formik>
     </>

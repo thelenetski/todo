@@ -46,15 +46,24 @@ function App() {
     });
   };
 
-  const visibleContactList = contacts.filter((item) =>
-    item.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const visibleContactList = contacts
+    .sort(function (a, b) {
+      if (a.done > b.done) {
+        return 1;
+      }
+      if (a.done < b.done) {
+        return -1;
+      }
+      return 0;
+    })
+    .filter((item) => item.name.toLowerCase().includes(filter.toLowerCase()));
 
   return (
     <>
       <h1>Make List</h1>
       <ContactForm onAdd={handleAdd} />
       <SearchBox value={filter} onFilter={setFilter} />
+      <hr></hr>
       <ContactList
         data={visibleContactList}
         onDelete={handleDelete}
