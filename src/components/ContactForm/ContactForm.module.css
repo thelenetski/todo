@@ -35,3 +35,17 @@
   background: #1094b3;
   border: 1px solid #0a5d71;
 }
+
+@media (prefers-color-scheme: dark) {
+  .contactForm {
+    background: #999;
+  }
+
+  .contactForm label {
+    color: #333;
+  }
+
+  .contactForm input {
+    background: #7d7d7d;
+  }
+}

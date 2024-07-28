@@ -20,3 +20,17 @@
 .searchBox input {
   width: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+  .searchBox {
+    background: #999;
+  }
+
+  .searchBox p {
+    color: #333;
+  }
+
+  .searchBox input {
+    background: #7d7d7d;
+  }
+}

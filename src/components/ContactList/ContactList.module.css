@@ -4,6 +4,12 @@
   background: none !important;
   overflow: scroll;
   border-radius: 10px;
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* для Firefox */
+}
+
+.contactList::-webkit-scrollbar {
+  display: none; /* для Chrome, Safari и Opera */
 }
 
 .contactList ul {
