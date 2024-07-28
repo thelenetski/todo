@@ -28,3 +28,9 @@
 .contactForm button {
   margin-top: 20px;
 }
+
+@media screen and (max-width: 450px) {
+  .contactForm {
+    width: 100%;
+  }
+}

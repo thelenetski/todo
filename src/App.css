@@ -11,3 +11,9 @@
 #root h1 {
   width: 100%;
 }
+
+@media screen and (max-width: 450px) {
+  input {
+    width: 100%;
+  }
+}

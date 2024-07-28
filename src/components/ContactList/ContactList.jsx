@@ -1,14 +1,14 @@
-import css from './ContactList.module.css';
-import Contact from '../Contact/Contact';
+import css from "./ContactList.module.css";
+import Contact from "../Contact/Contact";
 
-const ContactList = ({ data, onDelete }) => {
+const ContactList = ({ data, onDelete, onDone }) => {
   return (
     <div className={css.contactList}>
       <ul>
-        {data.map(user => {
+        {data.map((task) => {
           return (
-            <li key={user.id}>
-              <Contact data={user} onDelete={onDelete} />
+            <li key={task.id}>
+              <Contact data={task} onDelete={onDelete} onDone={onDone} />
             </li>
           );
         })}

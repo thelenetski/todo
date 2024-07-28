@@ -26,6 +26,34 @@
   margin-left: 10px;
 }
 
-.contactData svg {
+/* .contactData svg {
   color: green;
+} */
+
+button {
+  padding: 5px !important;
+}
+
+button:first-child {
+  margin-right: 10px;
+}
+
+.done {
+  border: 2px solid green;
+}
+
+.done p {
+  text-decoration: line-through;
+  color: green;
+}
+
+.done svg {
+  color: green;
+}
+
+@media screen and (max-width: 450px) {
+  .contact {
+    width: 100%;
+    margin: 2% 0;
+  }
 }

@@ -9,3 +9,9 @@
   display: flex;
   list-style-type: none;
 }
+
+@media screen and (max-width: 450px) {
+  .contactList li {
+    width: 100%;
+  }
+}

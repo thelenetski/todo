@@ -31,6 +31,21 @@ function App() {
     });
   };
 
+  const handleDone = (id) => {
+    setContacts((prev) => {
+      return prev.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            done: !item["done"] ? true : !item["done"],
+          };
+        }
+
+        return item;
+      });
+    });
+  };
+
   const visibleContactList = contacts.filter((item) =>
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
@@ -40,7 +55,11 @@ function App() {
       <h1>Make List</h1>
       <ContactForm onAdd={handleAdd} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList data={visibleContactList} onDelete={handleDelete} />
+      <ContactList
+        data={visibleContactList}
+        onDelete={handleDelete}
+        onDone={handleDone}
+      />
     </>
   );
 }
