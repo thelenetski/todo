@@ -70,7 +70,7 @@ button:focus-visible {
 input {
   height: 30px;
   margin-top: 1px;
-  border: 1px solid #999;
+  border: 1px solid #0a5d71b5;
   border-radius: 5px;
   box-sizing: border-box;
 }

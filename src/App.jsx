@@ -63,7 +63,9 @@ function App() {
       <h1>Make List</h1>
       <ContactForm onAdd={handleAdd} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <hr></hr>
+      <p
+        style={{ fontWeight: "500", margin: "10px 0" }}
+      >{`- Added ${contacts.length} tasks -`}</p>
       <ContactList
         data={visibleContactList}
         onDelete={handleDelete}

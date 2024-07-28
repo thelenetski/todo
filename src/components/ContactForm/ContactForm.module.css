@@ -29,3 +29,9 @@
   padding: 0 5px;
   background: #fff;
 }
+
+.addTask {
+  color: #eefcff;
+  background: #1094b3;
+  border: 1px solid #0a5d71;
+}
