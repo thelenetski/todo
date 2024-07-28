@@ -49,14 +49,11 @@ button:first-child {
   border: 1px solid #0d5b15;
   background: #2ea309;
   color: #dbffde;
-  /* border: 1px solid #0a4910;
-  background: yellowgreen;
-  color: #0a4910; */
 }
 
 .done {
   border: 2px solid green;
-  background: #abffab;
+  background: #abffab !important;
 }
 
 .done p {
