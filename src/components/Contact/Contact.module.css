@@ -25,6 +25,7 @@
 .contactData div p {
   font-size: 18px;
   margin-left: 10px;
+  text-align: left;
 }
 
 /* .contactData svg {
