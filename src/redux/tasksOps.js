@@ -41,10 +41,11 @@ export const deleteTask = createAsyncThunk(
 
 export const toggleDone = createAsyncThunk(
   "tasks/toggleDone",
-  async (taskId, thunkAPI) => {
+  async (task, thunkAPI) => {
+    console.log(task);
     try {
-      const response = await axios.put(`/tasks/${taskId}`, {
-        done: !taskId.done,
+      const response = await axios.put(`/tasks/${task.id}`, {
+        done: !task.done,
       });
       return response.data;
     } catch (e) {

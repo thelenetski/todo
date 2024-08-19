@@ -45,7 +45,7 @@ const tasksSlice = createSlice({
       .addCase(deleteTask.rejected, handleRejected)
       .addCase(toggleDone.pending, handlePending)
       .addCase(toggleDone.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.loading = false;
         state.error = null;
         const index = state.items.findIndex(
           (task) => task.id === action.payload.id

@@ -10,7 +10,7 @@ const Task = ({ task }) => {
 
   const onDelete = () => dispatch(deleteTask(task.id));
 
-  const onDone = () => dispatch(toggleDone(task.id));
+  const onDone = () => dispatch(toggleDone(task));
 
   return (
     <div className={clsx(css.contact, task.done && css.done)}>
@@ -21,18 +21,10 @@ const Task = ({ task }) => {
         </div>
       </div>
       <div style={{ display: "flex" }}>
-        <button
-          type="button"
-          className={css.btnDone}
-          onClick={() => onDone(task.id)}
-        >
+        <button type="button" className={css.btnDone} onClick={onDone}>
           {task.done ? "UnDone" : "Done"}
         </button>
-        <button
-          type="button"
-          className={css.delete}
-          onClick={() => onDelete(task.id)}
-        >
+        <button type="button" className={css.delete} onClick={onDelete}>
           Del
         </button>
       </div>
