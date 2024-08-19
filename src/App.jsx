@@ -1,76 +1,31 @@
 import "./App.css";
-import contactsData from "./contacts.json";
-import ContactForm from "./components/ContactForm/ContactForm";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactList from "./components/ContactList/ContactList";
-import { useEffect, useState } from "react";
+import TaskForm from "./components/TaskForm/TaskForm";
+import TasksList from "./components/TasksList/TasksList";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTasks } from "./redux/tasksOps";
+import { selectLoading, selectError, selectTasks } from "./redux/selectors";
 
 function App() {
-  const [contacts, setContacts] = useState(() => {
-    if (localStorage.getItem("todoData") !== null) {
-      return JSON.parse(localStorage.getItem("todoData"));
-    }
-
-    return contactsData;
-  });
-  const [filter, setFilter] = useState("");
+  const dispatch = useDispatch();
+  const tasks = useSelector(selectTasks);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
-    localStorage.setItem("todoData", JSON.stringify(contacts));
-  }, [contacts]);
-
-  const handleAdd = (newUser) => {
-    setContacts((prev) => {
-      return [...prev, newUser];
-    });
-  };
-
-  const handleDelete = (id) => {
-    setContacts((prev) => {
-      return prev.filter((item) => item.id !== id);
-    });
-  };
-
-  const handleDone = (id) => {
-    setContacts((prev) => {
-      return prev.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            done: !item["done"] ? true : !item["done"],
-          };
-        }
-
-        return item;
-      });
-    });
-  };
-
-  const visibleContactList = contacts
-    .sort(function (a, b) {
-      if (a.done > b.done) {
-        return 1;
-      }
-      if (a.done < b.done) {
-        return -1;
-      }
-      return 0;
-    })
-    .filter((item) => item.name.toLowerCase().includes(filter.toLowerCase()));
+    dispatch(fetchTasks());
+  }, [dispatch]);
 
   return (
     <>
       <h1>Make List</h1>
-      <ContactForm onAdd={handleAdd} />
-      <SearchBox value={filter} onFilter={setFilter} />
       <p
         style={{ fontWeight: "500", margin: "10px 0" }}
-      >{`- Added ${contacts.length} tasks -`}</p>
-      <ContactList
-        data={visibleContactList}
-        onDelete={handleDelete}
-        onDone={handleDone}
-      />
+      >{`- Added ${tasks.length} tasks -`}</p>
+      {loading && !error && <b>Loading...</b>}
+      <TasksList />
+      <TaskForm />
+      {/* <SearchBox value={filter} onFilter={setFilter} /> */}
     </>
   );
 }

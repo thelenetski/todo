@@ -1,44 +1,48 @@
-import css from "./ContactForm.module.css";
+import css from "./TaskForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { nanoid } from "nanoid";
 import { useId } from "react";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/tasksOps";
 
-const ContactForm = ({ onAdd }) => {
+const TaskForm = () => {
   const nameFieldId = useId();
+  const dispatch = useDispatch();
 
-  const newContact = {
-    name: "",
+  const newtask = {
+    task: "",
   };
 
   const FeedbackSchema = Yup.object().shape({
-    name: Yup.string()
+    task: Yup.string()
       .min(3, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
   });
 
   const handleSubmit = (values, actions) => {
-    onAdd({ ...values, id: nanoid(), done: false });
+    console.log({ ...values, done: false });
+    dispatch(addTask({ ...values, done: false }));
     actions.resetForm();
   };
 
   return (
     <>
       <Formik
-        initialValues={newContact}
+        initialValues={newtask}
         validationSchema={FeedbackSchema}
         onSubmit={handleSubmit}
       >
-        <Form className={css.contactForm}>
+        <Form className={css.taskForm}>
           <label htmlFor={nameFieldId}>To Do</label>
           <Field
             className={css.field}
             type="text"
-            name="name"
+            name="task"
+            placeholder="Enter text"
             id={nameFieldId}
           />
-          <ErrorMessage name="name" component="span" />
+          <ErrorMessage name="task" component="span" />
           <button type="submit" className={css.addTask}>
             Add task
           </button>
@@ -48,4 +52,4 @@ const ContactForm = ({ onAdd }) => {
   );
 };
 
-export default ContactForm;
+export default TaskForm;
