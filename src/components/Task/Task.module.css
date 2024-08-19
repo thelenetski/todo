@@ -73,9 +73,9 @@ button:first-child {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .contact {
     background: #999;
     color: #333;
   }
-}
+} */
