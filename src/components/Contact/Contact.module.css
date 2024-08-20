@@ -1,0 +1,81 @@
+.contact {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5%;
+  margin: 2%;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background: #eafbff;
+}
+
+.contactData {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.contactData div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.contactData div p {
+  font-size: 18px;
+  margin-left: 10px;
+  text-align: left;
+}
+
+/* .contactData svg {
+  color: green;
+} */
+
+button {
+  padding: 5px !important;
+}
+
+button:first-child {
+  margin-right: 10px;
+}
+
+.delete {
+  background: #ffb2b2;
+  color: #611010;
+  border: 1px solid #611010;
+}
+
+.btnDone {
+  border: 1px solid #0d5b15;
+  background: #2ea309;
+  color: #dbffde;
+}
+
+.done {
+  border: 2px solid green;
+  background: #abffab !important;
+}
+
+.done p {
+  text-decoration: line-through;
+  color: green;
+}
+
+.done svg {
+  color: green;
+}
+
+@media screen and (max-width: 450px) {
+  .contact {
+    width: 100%;
+    margin: 2% 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .contact {
+    background: #999;
+    color: #333;
+  }
+}
