@@ -22,7 +22,7 @@ const TasksList = () => {
 
   return (
     <div className={css.taskList}>
-      {/* <TabContext value={value}>
+      <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="Купити" value="1" />
@@ -55,7 +55,7 @@ const TasksList = () => {
               })}
           </ul>
         </TabPanel>
-      </TabContext> */}
+      </TabContext>
     </div>
   );
 };
