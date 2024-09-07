@@ -1,10 +1,11 @@
 .taskForm {
+  max-width: 300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  margin: 30px 0;
+  padding: 10px;
+  margin: 20px 0;
   border: 2px solid #333;
   border-radius: 10px;
   background: #9aecff;
@@ -12,25 +13,38 @@
 }
 
 .taskForm label {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27%;
   text-align: left;
   font-weight: bold;
 }
 
+.taskForm label input {
+  max-width: 20px;
+  margin-right: 5px;
+}
+
 .taskForm input {
-  width: 65%;
+  height: 30px;
+  width: 100%;
+  margin: 5px 0;
+  padding-left: 5px;
+  font-size: 15px;
 }
 
 .taskForm span {
   color: red;
   position: absolute;
-  top: 48px;
-  right: 125px;
+  top: 42px;
+  right: 15px;
   padding: 0 5px;
   background: #fff;
 }
 
 .addTask {
+  padding: 5px 10px !important;
   color: #eefcff;
   background: #1094b3;
   border: 1px solid #0a5d71;

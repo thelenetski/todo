@@ -11,19 +11,24 @@ const TaskForm = () => {
 
   const newtask = {
     task: "",
+    cat: "buy",
   };
 
   const FeedbackSchema = Yup.object().shape({
     task: Yup.string()
-      .min(3, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Required"),
+      .min(3, "Закоротке!")
+      .max(50, "Задовге!")
+      .required("Обов'язково"),
+    cat: Yup.string().required("Обов'язково"),
   });
 
   const handleSubmit = (values, actions) => {
     console.log({ ...values, done: false });
     dispatch(addTask({ ...values, done: false }));
     actions.resetForm();
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
   };
 
   return (
@@ -34,17 +39,26 @@ const TaskForm = () => {
         onSubmit={handleSubmit}
       >
         <Form className={css.taskForm}>
-          <label htmlFor={nameFieldId}>To Do</label>
+          <label htmlFor={nameFieldId}>Оце так</label>
           <Field
             className={css.field}
             type="text"
             name="task"
-            placeholder="Enter text"
+            placeholder="Введіть текст"
             id={nameFieldId}
           />
           <ErrorMessage name="task" component="span" />
+          <label>
+            <Field type="radio" name="cat" value="buy" />
+            Купити
+          </label>
+          <label>
+            <Field type="radio" name="cat" value="todo" />
+            Зробити
+          </label>
+          <ErrorMessage name="cat" component="span" />
           <button type="submit" className={css.addTask}>
-            Add task
+            Додати
           </button>
         </Form>
       </Formik>

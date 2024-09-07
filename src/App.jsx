@@ -53,8 +53,8 @@ function App() {
 
       <h1>Shopокупка</h1>
       <p
-        style={{ fontWeight: "500", margin: "10px 0" }}
-      >{`- Added ${tasks.length} tasks -`}</p>
+        style={{ fontWeight: "500", margin: "5px 0" }}
+      >{`- Додано ${tasks.length} позицій -`}</p>
       <TasksList />
       <TaskForm />
       {/* <SearchBox value={filter} onFilter={setFilter} /> */}
