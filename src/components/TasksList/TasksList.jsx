@@ -34,9 +34,9 @@ const TasksList = () => {
     setValue(newValue);
   };
 
-  const visibleTasks = [...tasks].sort((a, b) =>
-    a.done === b.done ? 0 : a.done ? 1 : -1
-  );
+  const visibleTasks = [...tasks]
+    .reverse()
+    .sort((a, b) => (a.done === b.done ? 0 : a.done ? 1 : -1));
 
   return (
     <div className={css.taskList}>
