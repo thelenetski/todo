@@ -10,7 +10,7 @@
   border-radius: 10px;
   background: #9aecff;
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
 }
 
 .taskForm label {
