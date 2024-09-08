@@ -1,17 +1,23 @@
 #root {
   max-width: 1280px;
+  height: 100vh;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
   /* flex-wrap: wrap; */
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  position: relative;
 }
 
 #root h1 {
   width: 100%;
+}
+
+.MuiTabs-indicator {
+  background-color: #1094b3 !important;
 }
 
 @media screen and (max-width: 450px) {

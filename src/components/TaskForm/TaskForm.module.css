@@ -5,11 +5,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin: 20px 0;
+  margin: 10px 0;
   border: 2px solid #333;
   border-radius: 10px;
   background: #9aecff;
-  position: relative;
+  position: absolute;
+  bottom: 0;
 }
 
 .taskForm label {
@@ -21,8 +22,20 @@
 }
 
 .taskForm label input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   width: 15px;
   margin-right: 5px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #1094b3; /* Цвет границы */
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.taskForm label input[type="radio"]:checked {
+  background-color: #34b2ce; /* Цвет радио-кнопки при выборе */
 }
 
 .taskForm input {

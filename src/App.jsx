@@ -33,8 +33,8 @@ function App() {
         <div
           style={{
             position: "absolute",
-            top: "67px",
-            left: "50px",
+            top: "62px",
+            left: "30px",
             color: "#4fa94d",
           }}
         >
