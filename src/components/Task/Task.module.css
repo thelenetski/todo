@@ -23,15 +23,19 @@
 }
 
 .contactData div p {
+  min-width: 200px;
   font-size: 18px;
-  margin-left: 10px;
   text-align: left;
 }
 
 /* .contactData svg {
   color: green;
 } */
-
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 button:hover,
 button:focus {
   border: none;
@@ -66,11 +70,13 @@ button:first-child {
 }
 
 .btnEdit svg {
+  font-size: 18px;
   color: black;
 }
 
 .btnDone svg {
   color: green;
+  margin-right: 5px;
 }
 
 .done {
