@@ -45,9 +45,7 @@ export const toggleDone = createAsyncThunk(
   async (task, thunkAPI) => {
     console.log(task);
     try {
-      const response = await axios.put(`/tasks/${task.id}`, {
-        done: !task.done,
-      });
+      const response = await axios.put(`/tasks/${task.id}`, task);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

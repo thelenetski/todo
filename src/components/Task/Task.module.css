@@ -32,24 +32,45 @@
   color: green;
 } */
 
-button {
-  padding: 5px !important;
+button:hover,
+button:focus {
+  border: none;
+  outline: none;
 }
 
 button:first-child {
   margin-right: 10px;
 }
 
-.delete {
+/* .delete {
   background: #ffb2b2;
   color: #611010;
   border: 1px solid #611010;
+} */
+
+.delete {
+  background: #ffb2b200;
+  border: none;
 }
 
-.btnDone {
-  border: 1px solid #0d5b15;
-  background: #2ea309;
+.delete svg {
+  font-size: 25px;
+  color: #c93a3a;
+}
+
+.btnDone,
+.btnEdit {
+  border: 1px solid #0d5b1500;
+  background: #2da30900;
   color: #dbffde;
+}
+
+.btnEdit svg {
+  color: black;
+}
+
+.btnDone svg {
+  color: green;
 }
 
 .done {
