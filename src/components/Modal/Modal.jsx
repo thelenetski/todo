@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -13,7 +12,7 @@ const ModalWindow = ({ onSuccess, children }) => {
 
   const onClose = () => dispatch(closeModal());
 
-  return createPortal(
+  return (
     <>
       <Modal
         open={isOpen}
@@ -44,8 +43,7 @@ const ModalWindow = ({ onSuccess, children }) => {
           </Button>
         </Box>
       </Modal>
-    </>,
-    document.getElementById("modal-root")
+    </>
   );
 };
 
