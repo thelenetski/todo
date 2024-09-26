@@ -10,8 +10,9 @@
   -ms-overflow-style: none; /* IE и Edge */
   scrollbar-width: none; /* для Firefox */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 5px;
   padding: 0;
   margin: 0;
 }
@@ -27,6 +28,6 @@
 
 @media screen and (max-width: 450px) {
   .taskList li {
-    width: 100%;
+    width: 49%;
   }
 }

@@ -62,18 +62,18 @@ const Task = ({ task }) => {
     <>
       <div className={clsx(css.contact, task.done && css.done)}>
         <div className={css.contactData}>
-          <div>
-            <button
-              type="button"
-              className={css.btnEdit}
-              onClick={() => dispatch(openEditTask(task))}
-            >
-              <FaEdit />
-            </button>
+          <>
             <p>{task.task}</p>
-          </div>
+          </>
         </div>
-        <div style={{ display: "flex" }}>
+        <div className={css.btnBox}>
+          <button
+            type="button"
+            className={css.btnEdit}
+            onClick={() => dispatch(openEditTask(task))}
+          >
+            <FaEdit />
+          </button>
           <button type="button" className={css.btnDone} onClick={onDone}>
             {task.done ? <GrClose /> : <FaCheck />}
           </button>
