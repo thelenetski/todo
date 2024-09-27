@@ -69,11 +69,13 @@ button:focus-visible {
 }
 
 input {
-  height: 30px;
-  margin-top: 1px;
+  height: 35px;
+  margin: 7px 0;
+  font-size: 15px;
   border: 1px solid #0a5d71b5;
   border-radius: 5px;
   box-sizing: border-box;
+  padding-left: 5px;
 }
 
 /* @media (prefers-color-scheme: light) {

@@ -4,6 +4,7 @@ import { useId } from "react";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../redux/tasksOps";
+import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
 const TaskForm = () => {
   const nameFieldId = useId();
@@ -39,7 +40,9 @@ const TaskForm = () => {
         onSubmit={handleSubmit}
       >
         <Form className={css.taskForm}>
-          <label htmlFor={nameFieldId}>Оце так</label>
+          <label htmlFor={nameFieldId} className={css.formTitle}>
+            Оце так
+          </label>
           <Field
             className={css.field}
             type="text"
@@ -48,7 +51,7 @@ const TaskForm = () => {
             id={nameFieldId}
           />
           <ErrorMessage name="task" component="span" />
-          <label>
+          {/* <label>
             <Field type="radio" name="cat" value="buy" />
             Купити
           </label>
@@ -56,6 +59,32 @@ const TaskForm = () => {
             <Field type="radio" name="cat" value="todo" />
             Зробити
           </label>
+          <ErrorMessage name="cat" component="span" /> */}
+          <RadioGroup
+            row
+            aria-labelledby="cat-value"
+            defaultValue="buy"
+            name="cat"
+          >
+            <FormControlLabel
+              value="buy"
+              control={
+                <Radio
+                  size="small"
+                  sx={{
+                    paddingRight: "5px",
+                  }}
+                />
+              }
+              label="Купити"
+              sx={{ fontSize: "10px" }}
+            />
+            <FormControlLabel
+              value="todo"
+              control={<Radio size="small" sx={{ paddingRight: "5px" }} />}
+              label="Зробити"
+            />
+          </RadioGroup>
           <ErrorMessage name="cat" component="span" />
           <button type="submit" className={css.addTask}>
             Додати

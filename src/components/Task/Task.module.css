@@ -1,11 +1,12 @@
 .contact {
-  width: 300px;
+  width: fit-content;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   padding: 10px;
-  margin: 2%;
+  margin: 0;
   border: 2px solid #333;
   border-radius: 10px;
   background: #eafbff;
@@ -34,7 +35,8 @@
 .btnBox {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 5px;
 }
 button {
   display: flex;
@@ -43,7 +45,6 @@ button {
 }
 button:hover,
 button:focus {
-  border: none;
   outline: none;
 }
 
@@ -90,6 +91,12 @@ button:focus {
 .done p {
   text-decoration: line-through;
   color: green;
+}
+
+.done .btnDone,
+.done .btnEdit,
+.done .delete {
+  background: #dffddf;
 }
 
 .done svg {
