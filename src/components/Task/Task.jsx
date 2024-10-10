@@ -2,7 +2,7 @@ import css from "./Task.module.css";
 import { FaEdit } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { GrClose } from "react-icons/gr";
+import { TbReload } from "react-icons/tb";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTask, toggleDone } from "../../redux/tasksOps";
@@ -75,7 +75,7 @@ const Task = ({ task }) => {
             <FaEdit />
           </button>
           <button type="button" className={css.btnDone} onClick={onDone}>
-            {task.done ? <GrClose /> : <FaCheck />}
+            {task.done ? <TbReload /> : <FaCheck />}
           </button>
           <button
             type="button"
