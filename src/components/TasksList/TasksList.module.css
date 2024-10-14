@@ -4,7 +4,7 @@
 }
 
 .taskList ul {
-  max-width: 650px;
+  max-width: 665px;
   max-height: 440px;
   overflow: scroll;
   -ms-overflow-style: none; /* IE и Edge */
