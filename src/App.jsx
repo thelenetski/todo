@@ -3,9 +3,9 @@ import TaskForm from "./components/TaskForm/TaskForm";
 import TasksList from "./components/TasksList/TasksList";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks } from "./redux/tasksOps";
 import { selectLoading, selectError, selectTasks } from "./redux/selectors";
 import { Radio } from "react-loader-spinner";
+import { updateTasks } from "./redux/tasksSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,18 +14,32 @@ function App() {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+    const socket = new WebSocket("wss://serva4ok.ddns.net:8040");
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(fetchTasks());
-      console.log("update");
-    }, 5000);
-    return () => {
-      clearInterval(interval);
+    socket.onopen = () => {
+      console.log("WebSocket connection established");
     };
-  }, []);
+
+    socket.onerror = (error) => {
+      console.error("WebSocket error:", error);
+    };
+
+    socket.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        console.log("Received data:", data);
+        if (data.type === "UPDATE_TASKS" || data.type === "INITIAL_TASKS") {
+          dispatch(updateTasks(data.payload));
+        }
+      } catch (err) {
+        console.error("Error parsing WebSocket message:", err.message);
+      }
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, [dispatch]);
 
   return (
     <>

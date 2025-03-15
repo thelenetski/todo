@@ -17,6 +17,11 @@ const tasksSlice = createSlice({
     loading: false,
     error: null,
   },
+  reducers: {
+    updateTasks: (state, action) => {
+      state.items = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTasks.pending, handlePending)
@@ -56,4 +61,5 @@ const tasksSlice = createSlice({
   },
 });
 
+export const { updateTasks } = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;
