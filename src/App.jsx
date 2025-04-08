@@ -28,7 +28,6 @@ function App() {
     socket.onmessage = (event) => {
       try {
         const data = JSON.parse(event.data);
-        console.log("Received data:", data);
         if (data.type === "UPDATE_TASKS" || data.type === "INITIAL_TASKS") {
           dispatch(updateTasks(data.payload));
         }
@@ -37,8 +36,24 @@ function App() {
       }
     };
 
+    const handleOffline = () => {
+      console.warn("Internet connection lost");
+      setLoading(false);
+      socket.close();
+    };
+
+    const handleOnline = () => {
+      console.log("Internet restored — reconnecting WebSocket...");
+      setLoading(true);
+    };
+
+    window.addEventListener("offline", handleOffline);
+    window.addEventListener("online", handleOnline);
+
     return () => {
       socket.close();
+      window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline);
     };
   }, [dispatch]);
 
@@ -84,7 +99,7 @@ function App() {
         >{`- Додано ${tasks.length} позицій -`}</p>
       </div>
       <TasksList />
-      <TaskForm />
+      {loading && <TaskForm />}
       {/* <SearchBox value={filter} onFilter={setFilter} /> */}
     </>
   );
