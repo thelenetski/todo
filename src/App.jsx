@@ -4,7 +4,7 @@ import TasksList from "./components/TasksList/TasksList";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTasks } from "./redux/selectors";
-import { Radio } from "react-loader-spinner";
+import { Oval, Radio } from "react-loader-spinner";
 import { updateTasks } from "./redux/tasksSlice";
 
 function App() {
@@ -90,7 +90,16 @@ function App() {
             </>
           ) : (
             <>
-              <span style={{ color: "red" }}>error</span>{" "}
+              <Oval
+                visible={true}
+                height="15"
+                width="15"
+                color="#ff0000"
+                ariaLabel="oval-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+              <span style={{ color: "red", marginLeft: "5px" }}>offline</span>{" "}
             </>
           )}
         </div>
@@ -98,7 +107,7 @@ function App() {
           style={{ fontWeight: "500", margin: "5px 0" }}
         >{`- Додано ${tasks.length} позицій -`}</p>
       </div>
-      <TasksList />
+      <TasksList loading={loading} />
       {loading && <TaskForm />}
       {/* <SearchBox value={filter} onFilter={setFilter} /> */}
     </>

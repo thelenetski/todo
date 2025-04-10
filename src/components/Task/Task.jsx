@@ -19,7 +19,7 @@ import ModalWindow from "../Modal/Modal";
 import EditForm from "../Modal/EditForm";
 import { useEffect, useState } from "react";
 
-const Task = ({ task }) => {
+const Task = ({ task, loading }) => {
   const dispatch = useDispatch();
   const type = useSelector(selectTypeModal);
   const content = useSelector(selectContentModal);
@@ -66,25 +66,27 @@ const Task = ({ task }) => {
             <p>{task.task}</p>
           </>
         </div>
-        <div className={css.btnBox}>
-          <button
-            type="button"
-            className={css.btnEdit}
-            onClick={() => dispatch(openEditTask(task))}
-          >
-            <FaEdit />
-          </button>
-          <button type="button" className={css.btnDone} onClick={onDone}>
-            {task.done ? <TbReload /> : <FaCheck />}
-          </button>
-          <button
-            type="button"
-            className={css.delete}
-            onClick={() => dispatch(openConfirmDelete(task))}
-          >
-            <MdDelete />
-          </button>
-        </div>
+        {loading && (
+          <div className={css.btnBox}>
+            <button
+              type="button"
+              className={css.btnEdit}
+              onClick={() => dispatch(openEditTask(task))}
+            >
+              <FaEdit />
+            </button>
+            <button type="button" className={css.btnDone} onClick={onDone}>
+              {task.done ? <TbReload /> : <FaCheck />}
+            </button>
+            <button
+              type="button"
+              className={css.delete}
+              onClick={() => dispatch(openConfirmDelete(task))}
+            >
+              <MdDelete />
+            </button>
+          </div>
+        )}
       </div>
       {content !== null && task.id === content.id && (
         <ModalWindow onSuccess={onSuccess}>

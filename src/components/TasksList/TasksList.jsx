@@ -8,7 +8,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { useState } from "react";
 
-const List = ({ data, cat }) => {
+const List = ({ data, cat, load }) => {
   return (
     data && (
       <ul>
@@ -17,7 +17,7 @@ const List = ({ data, cat }) => {
           .map((task) => {
             return (
               <li key={task.id}>
-                <Task task={task} />
+                <Task task={task} loading={load} />
               </li>
             );
           })}
@@ -26,7 +26,7 @@ const List = ({ data, cat }) => {
   );
 };
 
-const TasksList = () => {
+const TasksList = ({ loading }) => {
   const tasks = useSelector(selectTasks);
   const [value, setValue] = useState("1");
 
@@ -66,10 +66,10 @@ const TasksList = () => {
           </TabList>
         </Box>
         <TabPanel value="1" sx={{ padding: 0, marginTop: "10px" }}>
-          <List data={visibleTasks} cat="buy" />
+          <List data={visibleTasks} cat="buy" load={loading} />
         </TabPanel>
         <TabPanel value="2" sx={{ padding: 0, marginTop: "10px" }}>
-          <List data={visibleTasks} cat="todo" />
+          <List data={visibleTasks} cat="todo" load={loading} />
         </TabPanel>
       </TabContext>
     </div>
