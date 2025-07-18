@@ -39,6 +39,7 @@ const Task = ({ task, loading }) => {
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
+    console.log(name);
     setEditedTask((prev) => ({
       ...prev,
       [name]: value,
@@ -53,8 +54,6 @@ const Task = ({ task, loading }) => {
     if (type === modalTypes.confirmDelete) return handleDelete();
     if (type === modalTypes.editTask) return handleEditSubmit();
   };
-
-  // const onDelete = () => dispatch(deleteTask(task.id));
 
   const onDone = () => dispatch(toggleDone({ ...task, done: !task.done }));
 

@@ -16,10 +16,14 @@ const tasksSlice = createSlice({
     items: [],
     loading: false,
     error: null,
+    activeType: "1",
   },
   reducers: {
     updateTasks: (state, action) => {
       state.items = action.payload;
+    },
+    setActiveType: (state, action) => {
+      state.activeType = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -61,5 +65,5 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { updateTasks } = tasksSlice.actions;
+export const { updateTasks, setActiveType } = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;

@@ -1,11 +1,23 @@
 .taskList {
+  width: 100%;
+  height: 65%;
   background: none !important;
   border-radius: 10px;
 }
 
+.TaskListContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 700px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .taskList ul {
+  align-self: baseline;
   max-width: 665px;
-  max-height: 440px;
+  max-height: 100%;
   overflow: scroll;
   -ms-overflow-style: none; /* IE и Edge */
   scrollbar-width: none; /* для Firefox */
@@ -24,10 +36,25 @@
 .taskList li {
   display: flex;
   list-style-type: none;
+  animation: easeIn 0.3s ease-in-out;
+}
+
+.taskList h3 {
+  text-align: left;
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 450px) {
   .taskList li {
     width: 48%;
+  }
+}
+
+@keyframes easeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

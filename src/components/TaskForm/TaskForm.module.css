@@ -16,70 +16,20 @@
 .formTitle {
   font-weight: bold;
 }
-/*
-.taskForm label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  font-weight: bold;
-}
 
-.taskForm label input {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 15px;
-  margin-right: 5px;
-  height: 15px;
-  border-radius: 50%;
-  border: 2px solid #1094b3;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.taskForm label input[type="radio"]:checked {
-  background-color: #34b2ce; 
-}
-
-.taskForm input {
-  height: 35px;
+.catBtnBox {
   width: 100%;
-  margin: 5px 0;
-  padding-left: 5px;
-  font-size: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 11px;
 }
-
-.taskForm span {
-  color: red;
-  position: absolute;
-  top: 42px;
-  right: 15px;
-  padding: 0 5px;
-  background: #fff;
-}*/
 
 .addTask {
-  padding: 5px 10px !important;
+  width: 99px;
+  height: 35px;
   color: #eefcff;
   background: #1094b3;
   border: 1px solid #0a5d71;
+  border-radius: 5px;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  .taskForm {
-    background: #999;
-  }
-
-  .taskForm label {
-    color: #333;
-  }
-
-  .taskForm input {
-    background: #7d7d7d;
-  }
-
-  .taskForm span {
-    background: #7d7d7d;
-  }
-} */
