@@ -8,6 +8,10 @@
   scrollbar-width: none; /* для Firefox */
 }
 
+.taskList::-webkit-scrollbar {
+  display: none; /* для Chrome, Safari и Opera */
+}
+
 .TaskListContainer {
   display: flex;
   flex-direction: column;
@@ -26,10 +30,13 @@
   gap: 10px;
   padding: 0;
   margin: 0;
+  transition: 0.3s ease-in-out;
 }
 
-.taskList ul::-webkit-scrollbar {
-  display: none; /* для Chrome, Safari и Opera */
+.rollDown {
+  height: 0;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .taskList li {
@@ -37,10 +44,26 @@
   list-style-type: none;
   animation: easeIn 0.3s ease-in-out;
 }
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .taskList h3 {
+  width: 100%;
   text-align: left;
   text-transform: capitalize;
+  margin: 5px 0;
+}
+
+.taskList h3:hover {
+  cursor: pointer;
+}
+
+.titleBox span {
+  flex-shrink: 0;
+  font-size: 24px;
 }
 
 @media screen and (max-width: 450px) {

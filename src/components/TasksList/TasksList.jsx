@@ -12,10 +12,17 @@ import { setActiveType } from "../../redux/tasksSlice";
 
 const List = ({ data, type, load }) => {
   const loading = useSelector(selectLoading);
-
   const doneTasks = data.filter((task) => task.done);
   const notDoneTasks = data.filter((task) => !task.done);
   const categories = [...new Set(doneTasks.map((task) => task.category))];
+  const [open, setOpen] = useState({});
+
+  const toggleCategory = (category) => {
+    setOpen((prev) => ({
+      ...prev,
+      [category || "інше"]: !prev[category || "інше"],
+    }));
+  };
 
   return (
     data && (
@@ -24,7 +31,7 @@ const List = ({ data, type, load }) => {
           <Loader />
         ) : (
           <>
-            <ul>
+            <ul style={{ marginBottom: "20px" }}>
               {notDoneTasks
                 .filter((item) => item.type === type)
                 .map((task) => {
@@ -45,11 +52,21 @@ const List = ({ data, type, load }) => {
                 const tasksInCategory = doneTasks
                   .filter((item) => item.type === type)
                   .filter((task) => task.category === item);
+                const cat = (!item && "інше") || item;
                 return (
                   tasksInCategory.length > 0 && (
                     <div key={index} style={{ width: "100%" }}>
-                      <h3>{(!item && "Інше") || item}</h3>
-                      <ul>
+                      <div className={css.titleBox}>
+                        <h3
+                          onClick={() => {
+                            toggleCategory(item);
+                          }}
+                        >
+                          {(!item && "Інше") || item}
+                        </h3>
+                        <span>{!open[cat] ? "+" : "-"}</span>
+                      </div>
+                      <ul className={!open[cat] && css.rollDown}>
                         {tasksInCategory.map((task) => (
                           <li key={task.id}>
                             <Task task={task} loading={load} />
