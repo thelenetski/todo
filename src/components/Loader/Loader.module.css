@@ -1,7 +1,9 @@
 .loader {
-  position: relative;
+  position: absolute;
+  top: 50%;
   width: 100%;
   height: 164px;
+  transform: translateY(-50%);
 }
 .loader::before,
 .loader::after {

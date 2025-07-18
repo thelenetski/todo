@@ -42,20 +42,22 @@ const List = ({ data, type, load }) => {
                 return a.localeCompare(b);
               })
               .map((item, index) => {
-                const tasksInCategory = doneTasks.filter(
-                  (task) => task.category === item
-                );
+                const tasksInCategory = doneTasks
+                  .filter((item) => item.type === type)
+                  .filter((task) => task.category === item);
                 return (
-                  <div key={index} style={{ width: "100%" }}>
-                    <h3>{(!item && "Інше") || item}</h3>
-                    <ul>
-                      {tasksInCategory.map((task) => (
-                        <li key={task.id}>
-                          <Task task={task} loading={load} />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  tasksInCategory.length > 0 && (
+                    <div key={index} style={{ width: "100%" }}>
+                      <h3>{(!item && "Інше") || item}</h3>
+                      <ul>
+                        {tasksInCategory.map((task) => (
+                          <li key={task.id}>
+                            <Task task={task} loading={load} />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
                 );
               })}
           </>
