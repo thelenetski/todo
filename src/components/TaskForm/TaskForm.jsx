@@ -108,6 +108,7 @@ const TaskForm = () => {
                   onChange={(e) => handleCategoryChange(e, setFieldValue)}
                 >
                   <MenuItem value="">- Нічого -</MenuItem>
+                  <MenuItem value="крупи">Крупи</MenuItem>
                   <MenuItem value="молочне">Молочне</MenuItem>
                   <MenuItem value="мясне">Мясне</MenuItem>
                   <MenuItem value="напої">Напої</MenuItem>

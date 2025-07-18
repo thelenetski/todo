@@ -35,23 +35,29 @@ const List = ({ data, type, load }) => {
                   );
                 })}
             </ul>
-            {categories.map((item) => {
-              const tasksInCategory = doneTasks.filter(
-                (task) => task.category === item
-              );
-              return (
-                <div key={item} style={{ width: "100%" }}>
-                  <h3>{(!item && "Інше") || item}</h3>
-                  <ul>
-                    {tasksInCategory.map((task) => (
-                      <li key={task.id}>
-                        <Task task={task} loading={load} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+            {categories
+              .sort((a, b) => {
+                if (!a) return 1;
+                if (!b) return -1;
+                return a.localeCompare(b);
+              })
+              .map((item, index) => {
+                const tasksInCategory = doneTasks.filter(
+                  (task) => task.category === item
+                );
+                return (
+                  <div key={index} style={{ width: "100%" }}>
+                    <h3>{(!item && "Інше") || item}</h3>
+                    <ul>
+                      {tasksInCategory.map((task) => (
+                        <li key={task.id}>
+                          <Task task={task} loading={load} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
           </>
         )}
       </div>

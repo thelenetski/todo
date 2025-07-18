@@ -31,6 +31,7 @@ const EditForm = ({ editedTask, handleEditChange }) => {
           onChange={handleEditChange}
         >
           <MenuItem value="">- Нічого -</MenuItem>
+          <MenuItem value="крупи">Крупи</MenuItem>
           <MenuItem value="молочне">Молочне</MenuItem>
           <MenuItem value="мясне">Мясне</MenuItem>
           <MenuItem value="напої">Напої</MenuItem>
