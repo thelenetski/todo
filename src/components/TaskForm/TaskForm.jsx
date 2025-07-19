@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../../redux/tasksOps";
 import { selectActiveType } from "../../redux/selectors";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { selectList } from "../selectList";
 
 const TaskForm = () => {
   const nameFieldId = useId();
@@ -54,7 +55,7 @@ const TaskForm = () => {
         {({ setFieldValue }) => (
           <Form className={css.taskForm}>
             <label htmlFor={nameFieldId} className={css.formTitle}>
-              Оце так
+              Оце так задачка
             </label>
             <Field
               className={css.field}
@@ -73,7 +74,7 @@ const TaskForm = () => {
                   fontSize: "15px",
                   borderRadius: "5px",
                   boxSizing: "border-box",
-                  paddingLeft: "5px",
+                  paddingLeft: "0",
                   color: "#000000",
                   "& .MuiInputBase-root": {
                     height: "35px",
@@ -90,7 +91,6 @@ const TaskForm = () => {
                   id={categorySelectId}
                   sx={{
                     fontSize: "15px",
-                    paddingLeft: "5px",
                     top: "-10px",
                     "&.MuiInputLabel-shrink": {
                       top: "0",
@@ -107,14 +107,11 @@ const TaskForm = () => {
                   label="Категорія"
                   onChange={(e) => handleCategoryChange(e, setFieldValue)}
                 >
-                  <MenuItem value="">- Нічого -</MenuItem>
-                  <MenuItem value="крупи">Крупи</MenuItem>
-                  <MenuItem value="молочне">Молочне</MenuItem>
-                  <MenuItem value="мясне">Мясне</MenuItem>
-                  <MenuItem value="напої">Напої</MenuItem>
-                  <MenuItem value="овочі">Овочі</MenuItem>
-                  <MenuItem value="солодке">Солодке</MenuItem>
-                  <MenuItem value="фрукти">Фрукти</MenuItem>
+                  {selectList.map((opt) => (
+                    <MenuItem key={opt.label} value={opt.value}>
+                      {opt.label}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
 

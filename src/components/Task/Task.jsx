@@ -39,7 +39,6 @@ const Task = ({ task, loading }) => {
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
-    console.log(name);
     setEditedTask((prev) => ({
       ...prev,
       [name]: value,
@@ -55,7 +54,9 @@ const Task = ({ task, loading }) => {
     if (type === modalTypes.editTask) return handleEditSubmit();
   };
 
-  const onDone = () => dispatch(toggleDone({ ...task, done: !task.done }));
+  const onDone = () => {
+    dispatch(toggleDone({ ...task, done: !task.done }));
+  };
 
   return (
     <>

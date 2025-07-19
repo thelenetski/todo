@@ -1,88 +1,13 @@
 import css from "./TasksList.module.css";
-import Task from "../Task/Task";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoading, selectTasks } from "../../redux/selectors";
+import { selectTasks } from "../../redux/selectors";
 import { Box, Tab } from "@mui/material";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { useState } from "react";
-import Loader from "../Loader/Loader";
 import { setActiveType } from "../../redux/tasksSlice";
-
-const List = ({ data, type, load }) => {
-  const loading = useSelector(selectLoading);
-  const doneTasks = data.filter((task) => task.done);
-  const notDoneTasks = data.filter((task) => !task.done);
-  const categories = [...new Set(doneTasks.map((task) => task.category))];
-  const [open, setOpen] = useState({});
-
-  const toggleCategory = (category) => {
-    setOpen((prev) => ({
-      ...prev,
-      [category || "інше"]: !prev[category || "інше"],
-    }));
-  };
-
-  return (
-    data && (
-      <div className={css.TaskListContainer}>
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            <ul style={{ marginBottom: "20px" }}>
-              {notDoneTasks
-                .filter((item) => item.type === type)
-                .map((task) => {
-                  return (
-                    <li key={task.id}>
-                      <Task task={task} loading={load} />
-                    </li>
-                  );
-                })}
-            </ul>
-            {categories
-              .sort((a, b) => {
-                if (!a) return 1;
-                if (!b) return -1;
-                return a.localeCompare(b);
-              })
-              .map((item, index) => {
-                const tasksInCategory = doneTasks
-                  .filter((item) => item.type === type)
-                  .filter((task) => task.category === item);
-                const cat = (!item && "інше") || item;
-                return (
-                  tasksInCategory.length > 0 && (
-                    <div key={index} style={{ width: "100%" }}>
-                      <div className={css.titleBox}>
-                        <h3
-                          onClick={() => {
-                            toggleCategory(item);
-                          }}
-                        >
-                          {(!item && "Інше") || item}
-                        </h3>
-                        <span>{!open[cat] ? "+" : "-"}</span>
-                      </div>
-                      <ul className={!open[cat] && css.rollDown}>
-                        {tasksInCategory.map((task) => (
-                          <li key={task.id}>
-                            <Task task={task} loading={load} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )
-                );
-              })}
-          </>
-        )}
-      </div>
-    )
-  );
-};
+import { List } from "../List/List";
 
 const TasksList = ({ loading }) => {
   const tasks = useSelector(selectTasks);
