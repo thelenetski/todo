@@ -43,10 +43,12 @@ export const List = ({ data, type, load }) => {
                   );
                 })}
             </ul>
-            <div onClick={collapseCategories} className={css.collapse}>
-              Згорнути все
-              <VscCollapseAll size={18} />
-            </div>
+            {doneTasks.filter((item) => item.type === type).length > 0 && (
+              <div onClick={collapseCategories} className={css.collapse}>
+                Згорнути все
+                <VscCollapseAll size={18} />
+              </div>
+            )}
             {selectList
               .sort((a, b) => {
                 const valA = a.value || "інше";
@@ -66,14 +68,13 @@ export const List = ({ data, type, load }) => {
 
                 return (
                   <div key={index} style={{ width: "100%" }}>
-                    <div className={css.titleBox}>
-                      <h3
-                        onClick={() => {
-                          toggleCategory(catKey);
-                        }}
-                      >
-                        {(!value && "Інше") || label}
-                      </h3>
+                    <div
+                      className={css.titleBox}
+                      onClick={() => {
+                        toggleCategory(catKey);
+                      }}
+                    >
+                      <h3>{(!value && "Інше") || label}</h3>
                       <div
                         className={clsx(open[catKey] && css.minimize, css.open)}
                       >
@@ -81,7 +82,7 @@ export const List = ({ data, type, load }) => {
                         <div className={css.second}></div>
                       </div>
                     </div>
-                    <ul className={!open[catKey] && css.rollDown}>
+                    <ul className={clsx(!open[catKey] && css.rollDown)}>
                       {tasksInCategory.map((task) => (
                         <li key={task.id}>
                           <Task task={task} loading={load} />

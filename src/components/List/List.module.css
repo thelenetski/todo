@@ -35,6 +35,10 @@
   align-items: center;
 }
 
+.titleBox:hover {
+  cursor: pointer;
+}
+
 .collapse {
   width: 100%;
   display: flex;
@@ -59,9 +63,6 @@
   margin: 5px 0;
 }
 
-.TaskListContainer h3:hover {
-  cursor: pointer;
-}
 .open {
   display: flex;
   flex-shrink: 0;
